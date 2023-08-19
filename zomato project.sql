@@ -168,17 +168,9 @@ group by  userid , product_id)d)e)f group by product_id order by product_id;
 
 
 
-
-
--- Q 10 In the first one year after a customer joins the gold program (including  their join date) irrespective of what the customer has purchased
--- they earn 5 zomato points for every 10 rs spent who earned more 1 or 3
---  and what was their point earnings in thier first yr ?
-
-
-
--- Q 11 rank all the transaction of the customers ?
+-- Q 10 rank all the transaction of the customers ?
 select *, rank() over (partition by userid order by created_date ) rnk from sales;
--- Q12 rank all the transaction for each member whenever they are a zomato gold member for every non gold member transction mark as na  
+-- Q11 rank all the transaction for each member whenever they are a zomato gold member for every non gold member transction mark as na  
 
 -- Q12 rank all the transaction for each member whenever they are a zomato gold member for every non gold member transction mark as na  
 select e.* ,case when rnk = 0 then 'na' else rnk end as rnkk from 
